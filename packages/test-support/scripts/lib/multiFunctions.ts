@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/test-support authors & contributors
+// Copyright 2017-2022 @polkadot/test-support authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import BN from 'bn.js';
@@ -9,12 +9,7 @@ import { execute } from '@polkadot/test-support/transaction';
 
 import { waitForBountyState, waitForClaim } from './bountyWaitFunctions';
 import { FUNDING_TIME, PAYOUT_TIME } from './constants';
-import { extractHashesFromProposals,
-  extractIndexesFromProposals,
-  fillTreasury,
-  multiAcceptMotion,
-  multiGetMotion,
-  multiProposeMotion } from './helpers';
+import { extractHashesFromProposals, extractIndexesFromProposals, fillTreasury, multiAcceptMotion, multiGetMotion, multiProposeMotion } from './helpers';
 
 export async function multiProposeBounty (api: ApiPromise, numberOfBounties: number, signer: KeyringPair): Promise<number[]> {
   const initialIndex = await api.query.bounties.bountyCount();

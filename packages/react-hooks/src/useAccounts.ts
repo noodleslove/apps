@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/react-hooks authors & contributors
+// Copyright 2017-2022 @polkadot/react-hooks authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import { useEffect, useState } from 'react';
@@ -7,9 +7,10 @@ import { keyring } from '@polkadot/ui-keyring';
 import { u8aToHex } from '@polkadot/util';
 import { decodeAddress } from '@polkadot/util-crypto';
 
+import { createNamedHook } from './createNamedHook';
 import { useIsMountedRef } from './useIsMountedRef';
 
-interface UseAccounts {
+export interface UseAccounts {
   allAccounts: string[];
   allAccountsHex: string[];
   areAccountsLoaded: boolean
@@ -19,7 +20,7 @@ interface UseAccounts {
 
 const EMPTY: UseAccounts = { allAccounts: [], allAccountsHex: [], areAccountsLoaded: false, hasAccounts: false, isAccount: () => false };
 
-export function useAccounts (): UseAccounts {
+function useAccountsImpl (): UseAccounts {
   const mountedRef = useIsMountedRef();
   const [state, setState] = useState<UseAccounts>(EMPTY);
 
@@ -42,3 +43,5 @@ export function useAccounts (): UseAccounts {
 
   return state;
 }
+
+export const useAccounts = createNamedHook('useAccounts', useAccountsImpl);

@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/app-parachains authors & contributors
+// Copyright 2017-2022 @polkadot/app-parachains authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { BalanceOf } from '@polkadot/types/interfaces';
@@ -61,6 +61,7 @@ function RegisterThread ({ className, nextParaId, onClose, ownedIds }: Props): R
     <Modal
       className={className}
       header={t<string>('Register parathread')}
+      onClose={onClose}
       size='large'
     >
       <Modal.Content>
@@ -119,7 +120,7 @@ function RegisterThread ({ className, nextParaId, onClose, ownedIds }: Props): R
           />
         </Modal.Columns>
       </Modal.Content>
-      <Modal.Actions onCancel={onClose}>
+      <Modal.Actions>
         <TxButton
           accountId={accountId}
           icon='plus'

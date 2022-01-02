@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/react-components authors & contributors
+// Copyright 2017-2022 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { ApiPromise } from '@polkadot/api';
@@ -316,7 +316,7 @@ export default React.memo(styled(InputNumber)`
   &.isDisabled {
     .ui--SiDropdown {
       background: transparent;
-      border-color: rgba(34, 36, 38, .15) !important;
+      border-color: var(--border-input) !important;
       border-style: dashed;
       color: #666 !important;
       cursor: default !important;

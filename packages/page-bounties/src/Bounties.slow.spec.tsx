@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/app-bounties authors & contributors
+// Copyright 2017-2022 @polkadot/app-bounties authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import '@polkadot/react-components/i18n';
@@ -29,6 +29,7 @@ const renderBounties = () => {
         <ThemeProvider theme={lightTheme}>
           <Api
             apiUrl={`ws://127.0.0.1:${SUBSTRATE_PORT}`}
+            isElectron={false}
             store={memoryStore}
           >
             <WaitForApi>

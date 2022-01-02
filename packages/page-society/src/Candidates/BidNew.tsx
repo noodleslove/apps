@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/app-society authors & contributors
+// Copyright 2017-2022 @polkadot/app-society authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type BN from 'bn.js';
@@ -23,6 +23,7 @@ function BidNew ({ onClose }: Props): React.ReactElement<Props> {
   return (
     <Modal
       header= {t<string>('Bid to join')}
+      onClose={onClose}
       size='large'
     >
       <Modal.Content>
@@ -43,7 +44,7 @@ function BidNew ({ onClose }: Props): React.ReactElement<Props> {
           />
         </Modal.Columns>
       </Modal.Content>
-      <Modal.Actions onCancel={onClose}>
+      <Modal.Actions>
         <TxButton
           accountId={accountId}
           icon='sign-in-alt'

@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/apps-config authors & contributors
+// Copyright 2017-2022 @polkadot/apps-config authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { TFunction } from 'i18next';
@@ -16,7 +16,9 @@ function sortLinks (a: SortOption, b: SortOption): number {
     : 0;
 }
 
-export function expandLinked (input: LinkOption[]): LinkOption[] {
+function expandLinked (input: LinkOption[]): LinkOption[] {
+  const valueRelay = input.map(({ value }) => value);
+
   return input.reduce((result: LinkOption[], entry): LinkOption[] => {
     result.push(entry);
 
@@ -25,6 +27,7 @@ export function expandLinked (input: LinkOption[]): LinkOption[] {
         expandLinked(entry.linked).map((child): LinkOption => {
           child.genesisHashRelay = entry.genesisHash;
           child.isChild = true;
+          child.valueRelay = valueRelay;
 
           return child;
         })
@@ -33,7 +36,7 @@ export function expandLinked (input: LinkOption[]): LinkOption[] {
   }, []);
 }
 
-export function expandEndpoint (t: TFunction, { dnslink, genesisHash, homepage, info, isChild, isDisabled, isUnreachable, linked, paraId, providers, teleport, text }: EndpointOption, firstOnly?: boolean): LinkOption[] {
+function expandEndpoint (t: TFunction, { dnslink, genesisHash, homepage, info, isChild, isDisabled, isUnreachable, linked, paraId, providers, teleport, text }: EndpointOption, firstOnly: boolean, withSort: boolean): LinkOption[] {
   const base = {
     genesisHash,
     homepage,
@@ -56,7 +59,7 @@ export function expandEndpoint (t: TFunction, { dnslink, genesisHash, homepage, 
       isRelay: false,
       textBy: value.startsWith('light://')
         ? t('lightclient.experimental', 'light client (experimental)', { ns: 'apps-config' })
-        : t('rpc.hosted.by', 'hosted by {{host}}', { ns: 'apps-config', replace: { host } }),
+        : t('rpc.hosted.via', 'via {{host}}', { ns: 'apps-config', replace: { host } }),
       value
     }));
 
@@ -64,11 +67,10 @@ export function expandEndpoint (t: TFunction, { dnslink, genesisHash, homepage, 
     const last = result[result.length - 1];
     const options: LinkOption[] = [];
 
-    linked
-      .sort(sortLinks)
+    (withSort ? linked.sort(sortLinks) : linked)
       .filter(({ paraId }) => paraId)
       .forEach((o) =>
-        options.push(...expandEndpoint(t, o, firstOnly))
+        options.push(...expandEndpoint(t, o, firstOnly, withSort))
       );
 
     last.isRelay = true;
@@ -78,6 +80,8 @@ export function expandEndpoint (t: TFunction, { dnslink, genesisHash, homepage, 
   return expandLinked(result);
 }
 
-export function expandEndpoints (t: TFunction, input: EndpointOption[], firstOnly?: boolean): LinkOption[] {
-  return input.sort(sortLinks).reduce((result: LinkOption[], input) => result.concat(expandEndpoint(t, input, firstOnly)), []);
+export function expandEndpoints (t: TFunction, input: EndpointOption[], firstOnly: boolean, withSort: boolean): LinkOption[] {
+  return (withSort ? input.sort(sortLinks) : input).reduce<LinkOption[]>((result, input) =>
+    result.concat(expandEndpoint(t, input, firstOnly, withSort)), []
+  );
 }

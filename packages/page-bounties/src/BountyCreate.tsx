@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/app-bounties authors & contributors
+// Copyright 2017-2022 @polkadot/app-bounties authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type BN from 'bn.js';
@@ -62,6 +62,7 @@ function BountyCreate () {
         <Modal
           className='ui--AddBountyModal'
           header={t<string>('Add Bounty')}
+          onClose={toggleIsOpen}
         >
           <Modal.Content>
             <Modal.Columns hint={t<string>('Description of the Bounty (to be stored on-chain)')}>
@@ -113,7 +114,7 @@ function BountyCreate () {
               )}
             </Modal.Columns>
           </Modal.Content>
-          <Modal.Actions onCancel={toggleIsOpen}>
+          <Modal.Actions>
             <TxButton
               accountId={accountId}
               icon='plus'

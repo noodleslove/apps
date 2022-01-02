@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/apps-config authors & contributors
+// Copyright 2017-2022 @polkadot/apps-config authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { TFunction } from 'i18next';
@@ -22,7 +22,9 @@ export function createKusama (t: TFunction): EndpointOption {
     providers: {
       Parity: 'wss://kusama-rpc.polkadot.io',
       OnFinality: 'wss://kusama.api.onfinality.io/public-ws',
-      'Patract Elara': 'wss://kusama.elara.patract.io',
+      'Patract Elara': 'wss://pub.elara.patract.io/kusama',
+      // 'Geometry Labs': 'wss://kusama.geometry.io/websockets', // https://github.com/polkadot-js/apps/pull/6746
+      // Dwellir: 'wss://kusama-rpc.dwellir.com', // https://github.com/polkadot-js/apps/issues/6753
       'light client': 'light://substrate-connect/kusama'
       // Pinknode: 'wss://rpc.pinknode.io/kusama/explorer' // https://github.com/polkadot-js/apps/issues/5721
     },
@@ -36,9 +38,9 @@ export function createKusama (t: TFunction): EndpointOption {
         paraId: 1000,
         text: t('rpc.kusama.statemine', 'Statemine', { ns: 'apps-config' }),
         providers: {
-          Parity: 'wss://kusama-statemine-rpc.paritytech.net',
+          Parity: 'wss://statemine-rpc.polkadot.io',
           OnFinality: 'wss://statemine.api.onfinality.io/public-ws',
-          'Patract Elara': 'wss://statemine.kusama.elara.patract.io'
+          'Patract Elara': 'wss://pub.elara.patract.io/statemine'
         },
         teleport: [-1]
       },
@@ -48,29 +50,54 @@ export function createKusama (t: TFunction): EndpointOption {
       {
         info: 'altair',
         homepage: 'https://centrifuge.io/altair',
-        paraId: 2021,
+        paraId: 2088,
         text: t('rpc.kusama.altair', 'Altair', { ns: 'apps-config' }),
         providers: {
-          Centrifuge: 'wss://fullnode.altair.centrifuge.io'
+          Centrifuge: 'wss://fullnode.altair.centrifuge.io',
+          OnFinality: 'wss://altair.api.onfinality.io/public-ws'
         }
       },
       {
         info: 'basilisk',
         homepage: 'https://bsx.fi',
-        paraId: 2082,
+        paraId: 2090,
         text: t('rpc.kusama.basilisk', 'Basilisk', { ns: 'apps-config' }),
         providers: {
-          HydraDX: 'wss://rpc-01.basilisk.hydradx.io'
+          HydraDX: 'wss://rpc-01.basilisk.hydradx.io',
+          OnFinality: 'wss://basilisk.api.onfinality.io/public-ws'
         }
       },
       {
         info: 'bifrost',
         homepage: 'https://ksm.vtoken.io/?ref=polkadotjs',
         paraId: 2001,
-        text: t('rpc.kusama.bifrost', 'Bifrost', { ns: 'apps-config' }),
+        text: t('rpc.kusama.bifrost', 'Bifrost (Kusama)', { ns: 'apps-config' }),
         providers: {
-          'Bifrost Foundation': 'wss://bifrost-rpc.liebi.com/ws',
+          Liebi: 'wss://bifrost-rpc.liebi.com/ws',
           OnFinality: 'wss://bifrost-parachain.api.onfinality.io/public-ws'
+        }
+      },
+      {
+        info: 'bitcountryPioneer',
+        homepage: 'https://bit.country/?ref=polkadotjs',
+        paraId: 2096,
+        text: t('rpc.kusama.pioneerNetwork', 'Bit.Country Pioneer', { ns: 'apps-config' }),
+        providers: {
+          'Bit.Country': 'wss://pioneer-1-rpc.bit.country',
+          OnFinality: 'wss://pioneer.api.onfinality.io/public-ws'
+        }
+      },
+      {
+        info: 'calamari',
+        homepage: 'https://www.calamari.network/',
+        paraId: 2084,
+        text: t('rpc.calamari.systems', 'Calamari', { ns: 'apps-config' }),
+        providers: {
+          'Calamari Falafel': 'wss://falafel.calamari.systems/',
+          'Calamari Fritti': 'wss://fritti.calamari.systems/',
+          'Calamari Pasta': 'wss://pasta.calamari.systems/',
+          'Calamari Smoothie': 'wss://smoothie.calamari.systems/',
+          OnFinality: 'wss://calamari.api.onfinality.io/public-ws'
         }
       },
       {
@@ -83,40 +110,31 @@ export function createKusama (t: TFunction): EndpointOption {
         }
       },
       {
-        info: 'crab_redirect',
-        homepage: 'https://crab.network/',
-        paraId: 2006,
-        text: t('rpc.kusama.crab-redirect', 'Darwinia Crab Redirect', { ns: 'apps-config' }),
-        providers: {
-          Crab: 'wss://crab-redirect-rpc.darwinia.network/'
-        }
-      },
-      {
-        info: 'encointer_canary',
+        info: 'encointer',
         homepage: 'https://encointer.org/',
-        isUnreachable: true,
-        paraId: 2014,
-        text: t('rpc.kusama.encointer', 'Encointer Canary', { ns: 'apps-config' }),
+        paraId: 1001,
+        text: t('rpc.kusama.encointer', 'Encointer Network', { ns: 'apps-config' }),
         providers: {
-          Encointer: 'wss://canary.encointer.org'
+          'Encointer Association': 'wss://api.kusama.encointer.org'
         }
       },
       {
         info: 'genshiro',
         homepage: 'https://genshiro.equilibrium.io',
+        isUnreachable: true, // https://github.com/polkadot-js/apps/pull/6761
         paraId: 2024,
         text: t('rpc.kusama.genshiro', 'Genshiro', { ns: 'apps-config' }),
         providers: {
-          Equilibrium: 'wss://gens-mainnet.equilibrium.io'
+          Equilibrium: 'wss://node.genshiro.io'
         }
       },
       {
         info: 'integritee',
-        isUnreachable: true,
+        homepage: 'https://integritee.network',
         paraId: 2015,
         text: t('rpc.kusama.integritee', 'Integritee Network', { ns: 'apps-config' }),
         providers: {
-          Integritee: 'wss://mainnet.integritee.network'
+          Integritee: 'wss://kusama.api.integritee.network'
         }
       },
       {
@@ -130,8 +148,7 @@ export function createKusama (t: TFunction): EndpointOption {
           'Acala Foundation 2': 'wss://karura-rpc-2.aca-api.network/ws',
           'Acala Foundation 3': 'wss://karura-rpc-3.aca-api.network/ws',
           'Polkawallet 0': 'wss://karura.polkawallet.io',
-          OnFinality: 'wss://karura.api.onfinality.io/public-ws',
-          'Patract Elara': 'wss://karura.kusama.elara.patract.io'
+          OnFinality: 'wss://karura.api.onfinality.io/public-ws'
         }
       },
       {
@@ -140,17 +157,28 @@ export function createKusama (t: TFunction): EndpointOption {
         paraId: 2004,
         text: t('rpc.kusama.khala', 'Khala Network', { ns: 'apps-config' }),
         providers: {
-          Phala: 'wss://khala.phala.network/ws',
+          Phala: 'wss://khala-api.phala.network/ws',
           OnFinality: 'wss://khala.api.onfinality.io/public-ws'
         }
       },
       {
         info: 'kilt',
         homepage: 'https://www.kilt.io/',
-        paraId: 2005,
+        paraId: 2086,
         text: t('rpc.kusama.kilt', 'KILT Spiritnet', { ns: 'apps-config' }),
         providers: {
-          'KILT Protocol': 'wss://spiritnet.kilt.io/'
+          'KILT Protocol': 'wss://spiritnet.kilt.io/',
+          OnFinality: 'wss://spiritnet.api.onfinality.io/public-ws'
+        }
+      },
+      {
+        info: 'kintsugi',
+        homepage: 'https://kintsugi.interlay.io/',
+        paraId: 2092,
+        text: t('rpc.kusama.kintsugi', 'Kintsugi BTC', { ns: 'apps-config' }),
+        providers: {
+          'Kintsugi Labs': 'wss://api-kusama.interlay.io/parachain',
+          OnFinality: 'wss://kintsugi.api.onfinality.io/public-ws'
         }
       },
       {
@@ -165,6 +193,7 @@ export function createKusama (t: TFunction): EndpointOption {
       },
       {
         info: 'loomNetwork',
+        isUnreachable: true, // https://github.com/polkadot-js/apps/issues/5888
         homepage: 'https://loomx.io/',
         paraId: 2080,
         text: t('rpc.kusama.loomnetwork', 'Loom Network', { ns: 'apps-config' }),
@@ -174,7 +203,7 @@ export function createKusama (t: TFunction): EndpointOption {
       },
       {
         info: 'mars',
-        homepage: 'https://www.aresprotocol.io/',
+        homepage: 'https://www.aresprotocol.io/mars',
         paraId: 2008,
         text: t('rpc.kusama.mars', 'Mars', { ns: 'apps-config' }),
         providers: {
@@ -189,11 +218,40 @@ export function createKusama (t: TFunction): EndpointOption {
         providers: {
           PureStake: 'wss://wss.moonriver.moonbeam.network',
           OnFinality: 'wss://moonriver.api.onfinality.io/public-ws',
-          'Patract Elara': 'wss://moonriver.kusama.elara.patract.io'
+          Pinknode: 'wss://rpc.pinknode.io/moonriver/explorer'
+        }
+      },
+      {
+        info: 'heiko',
+        homepage: 'https://parallel.fi',
+        paraId: 2085,
+        text: t('rpc.kusama.heiko', 'Parallel Heiko', { ns: 'apps-config' }),
+        providers: {
+          OnFinality: 'wss://parallel-heiko.api.onfinality.io/public-ws',
+          Parallel: 'wss://heiko-rpc.parallel.fi'
+        }
+      },
+      {
+        info: 'picasso',
+        homepage: 'https://picasso.composable.finance/',
+        paraId: 2087,
+        text: t('rpc.kusama.picasso', 'Picasso', { ns: 'apps-config' }),
+        providers: {
+          Composable: 'wss://picasso-rpc.composable.finance'
+        }
+      },
+      {
+        info: 'pichiu',
+        homepage: 'https://kylin.network/',
+        paraId: 2102,
+        text: t('rpc.kusama.pichiu', 'Pichiu', { ns: 'apps-config' }),
+        providers: {
+          'Kylin Network': 'wss://kusama.kylin-node.co.uk'
         }
       },
       {
         info: 'polkasmith',
+        isUnreachable: true, // https://github.com/polkadot-js/apps/issues/6595
         homepage: 'https://polkasmith.polkafoundry.com/',
         paraId: 2009,
         text: t('rpc.kusama.polkasmith', 'PolkaSmith by PolkaFoundry', { ns: 'apps-config' }),
@@ -202,9 +260,20 @@ export function createKusama (t: TFunction): EndpointOption {
         }
       },
       {
+        info: 'quartz',
+        homepage: 'https://unique.network/',
+        paraId: 2095,
+        text: t('quartz.unique.network', 'QUARTZ by UNIQUE', { ns: 'apps-config' }),
+        providers: {
+          Unique: 'wss://quartz.unique.network',
+          'Unique Europe': 'wss://eu-ws-quartz.unique.network',
+          'Unique US': 'wss://us-ws-quartz.unique.network'
+        }
+      },
+      {
         info: 'robonomics',
         homepage: 'http://robonomics.network/',
-        paraId: 2077,
+        paraId: 2048,
         text: t('rpc.kusama.robonomics', 'Robonomics', { ns: 'apps-config' }),
         providers: {
           Airalab: 'wss://kusama.rpc.robonomics.network/'
@@ -229,23 +298,14 @@ export function createKusama (t: TFunction): EndpointOption {
         }
       },
       {
-        info: 'sherpax',
-        homepage: 'https://chainx.org/',
-        isUnreachable: true,
-        paraId: 2013,
-        text: t('rpc.kusama.sherpax', 'SherpaX', { ns: 'apps-config' }),
-        providers: {
-          ChainX: 'wss://sherpax.chainx.org'
-        }
-      },
-      {
         info: 'shiden',
         homepage: 'https://shiden.plasmnet.io/',
         paraId: 2007,
         text: t('rpc.kusama.shiden', 'Shiden', { ns: 'apps-config' }),
         providers: {
-          StakeTechnologies: 'wss://rpc.shiden.plasmnet.io',
-          OnFinality: 'wss://shiden.api.onfinality.io/public-ws'
+          StakeTechnologies: 'wss://rpc.shiden.astar.network',
+          OnFinality: 'wss://shiden.api.onfinality.io/public-ws',
+          Pinknode: 'wss://rpc.pinknode.io/shiden/explorer'
         }
       },
       {
@@ -255,6 +315,35 @@ export function createKusama (t: TFunction): EndpointOption {
         text: t('rpc.kusama.subgame', 'SubGame Gamma', { ns: 'apps-config' }),
         providers: {
           SubGame: 'wss://gamma.subgame.org/'
+        }
+      },
+      {
+        info: 'subsocial',
+        isUnreachable: true, // https://github.com/polkadot-js/apps/issues/6550
+        homepage: 'https://subsocial.network/',
+        paraId: 2100,
+        text: t('rpc.kusama.subsocial', 'Subsocial', { ns: 'apps-config' }),
+        providers: {
+          Dappforce: 'wss://para.subsocial.network'
+        }
+      },
+      {
+        info: 'unorthodox',
+        homepage: 'https://standard.tech/',
+        paraId: 2094,
+        text: t('rpc.kusama.standard', 'Unorthodox', { ns: 'apps-config' }),
+        providers: {
+          'Standard Protocol': 'wss://rpc.kusama.standard.tech'
+        }
+      },
+      {
+        info: 'zeitgeist',
+        isUnreachable: true, // https://github.com/polkadot-js/apps/issues/6635
+        homepage: 'https://zeitgeist.pm',
+        paraId: 2101,
+        text: t('rpc.kusama.zeitgeist', 'Zeitgeist', { ns: 'apps-config' }),
+        providers: {
+          ZeitgeistPM: 'wss://rpc-0.zeitgeist.pm'
         }
       }
     ]

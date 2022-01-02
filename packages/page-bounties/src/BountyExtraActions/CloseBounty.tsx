@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/app-treasury authors & contributors
+// Copyright 2017-2022 @polkadot/app-treasury authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { BountyIndex } from '@polkadot/types/interfaces';
@@ -44,6 +44,7 @@ function CloseBounty ({ description, index, toggleOpen }: Props): React.ReactEle
   return (
     <Modal
       header={`${t<string>('close bounty')} - "${truncateTitle(description, 30)}"`}
+      onClose={toggleOpen}
       size='large'
     >
       <Modal.Content>
@@ -58,7 +59,7 @@ function CloseBounty ({ description, index, toggleOpen }: Props): React.ReactEle
           />
         </Modal.Columns>
       </Modal.Content>
-      <Modal.Actions onCancel={toggleOpen}>
+      <Modal.Actions>
         <TxButton
           accountId={accountId}
           icon='ban'

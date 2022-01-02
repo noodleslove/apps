@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/react-components authors & contributors
+// Copyright 2017-2022 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import type { TFunction } from 'i18next';
@@ -31,7 +31,12 @@ function createOptions (api: ApiPromise, t: TFunction, blockTime: number): { tex
       text: t<string>('{{value}}x voting balance, locked for {{lock}}x enactment ({{period}} days)', {
         replace: {
           lock,
-          period: (bnLock.mul(api.consts.democracy.enactmentPeriod.muln(blockTime).div(BN_THOUSAND)).toNumber() / SEC_DAY).toFixed(2),
+          period: (
+            bnLock.mul(
+              api.consts.democracy.voteLockingPeriod ||
+              api.consts.democracy.enactmentPeriod
+            ).muln(blockTime).div(BN_THOUSAND).toNumber() / SEC_DAY
+          ).toFixed(2),
           value
         }
       }),
