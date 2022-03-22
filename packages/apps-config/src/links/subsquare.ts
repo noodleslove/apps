@@ -7,8 +7,11 @@ import { externalLogos } from '../ui/logos';
 
 export default {
   chains: {
+    Acala: 'acala',
+    Bifrost: 'bifrost',
     Karura: 'karura',
-    Khala: 'khala'
+    Khala: 'khala',
+    kintsugi: 'kintsugi'
   },
   create: (chain: string, path: string, data: BN | number | string): string =>
     `https://${chain}.subsquare.io/${path}/${data.toString()}`,
