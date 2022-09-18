@@ -16,17 +16,31 @@ import { ROCOCO_GENESIS } from '../api/constants';
 // IMPORTANT: Alphabetical based on text
 export const testParasRococo: EndpointOption[] = [
   {
-    info: 'arctic',
-    isUnreachable: true, // https://github.com/polkadot-js/apps/issues/7420
-    paraId: 3025,
-    text: 'Arctic',
+    info: 'rococoAmplitude',
+    paraId: 2124,
+    text: 'Amplitude',
     providers: {
-      Arctic: 'wss://arctic-rpc-parachain.icenetwork.io:9944'
+      PendulumChain: 'wss://pencol-roc-00.pendulumchain.tech'
     }
   },
   {
+    info: 'arctic',
+    paraId: 3015,
+    text: 'Arctic',
+    providers: {
+      Arctic: 'wss://arctic-rococo-rpc.icenetwork.io'
+    }
+  },
+  {
+    info: 'rococoAventus',
+    homepage: 'https://www.aventus.io/',
+    paraId: 2056,
+    text: 'Aventus',
+    providers: { }
+  },
+  {
     info: 'rococoBajun',
-    paraId: 3026,
+    paraId: 2119,
     text: 'Bajun Network',
     providers: {
       AjunaNetwork: 'wss://rpc-rococo.bajun.network'
@@ -37,7 +51,15 @@ export const testParasRococo: EndpointOption[] = [
     paraId: 2090,
     text: 'Basilisk',
     providers: {
-      'Galactic Council': 'wss://rpc-01.basilisk-rococo.hydradx.io'
+      'Galactic Council': 'wss://rococo-basilisk-rpc.hydration.dev'
+    }
+  },
+  {
+    info: 'rococoBifrost',
+    paraId: 2001,
+    text: 'Bifrost',
+    providers: {
+      Liebi: 'wss://bifrost-rpc.rococo.liebi.com/ws'
     }
   },
   {
@@ -45,7 +67,7 @@ export const testParasRococo: EndpointOption[] = [
     paraId: 3024,
     text: 'Bitgreen',
     providers: {
-      Bitgreen: 'wss://rococobitgreen.abhath-labs.com'
+      Bitgreen: 'wss://testnet.bitgreen.org'
     }
   },
   {
@@ -54,6 +76,22 @@ export const testParasRococo: EndpointOption[] = [
     text: 'Catalyst',
     providers: {
       Centrifuge: 'wss://fullnode.catalyst.cntrfg.com'
+    }
+  },
+  {
+    info: 'rococoConfti',
+    paraId: 4094,
+    text: 'Confti',
+    providers: {
+      // Confti: 'wss://ws.confti.club' // https://github.com/polkadot-js/apps/issues/8036
+    }
+  },
+  {
+    info: 'rococoCrust',
+    paraId: 2012,
+    text: 'Crust Testnet',
+    providers: {
+      Crust: 'wss://rococo-csm.crustcode.com/'
     }
   },
   {
@@ -69,23 +107,47 @@ export const testParasRococo: EndpointOption[] = [
     paraId: 2084,
     text: 'Dolphin',
     providers: {
-      'Manta Network': 'wss://anjie.rococo.dolphin.engineering'
+      'Manta Network': 'wss://ws.rococo.dolphin.engineering'
     }
   },
   {
-    info: 'rocfinity',
-    paraId: 2051,
-    text: 'Efinity',
+    info: 'Eggnet',
+    paraId: 4006,
+    text: 'Eggnet',
     providers: {
-      Efinity: 'wss://rpc.rococo.efinity.io'
+      Webb: 'wss://rococo1.webb.tools'
+    }
+  },
+  {
+    info: 'rococoFrequency',
+    paraId: 4044,
+    text: 'Frequency',
+    providers: {
+      Frequency: 'wss://collator1.frequency.xyz'
     }
   },
   {
     info: 'rococoGenshiro',
     paraId: 2024,
-    text: 'Genshiro Rococo Testnet',
+    text: 'Genshiro Testnet',
     providers: {
       Equilibrium: 'wss://parachain-testnet.equilab.io/rococo/collator/node1/wss'
+    }
+  },
+  {
+    info: 'helixstreet',
+    paraId: 3025,
+    text: 'Helixstreet',
+    providers: {
+      Helixstreet: 'wss://rpc-rococo.helixstreet.io'
+    }
+  },
+  {
+    info: 'rococoImbue',
+    paraId: 2121,
+    text: 'Imbue Network',
+    providers: {
+      'Imbue Network': 'wss://rococo.imbue.network'
     }
   },
   {
@@ -97,14 +159,6 @@ export const testParasRococo: EndpointOption[] = [
     }
   },
   {
-    info: 'rococoTinker',
-    paraId: 2014,
-    text: 'InvArch Tinkernet',
-    providers: {
-      OnFinality: 'wss://invarch-tinkernet.api.onfinality.io/public-ws'
-    }
-  },
-  {
     info: 'rococoLitentry',
     paraId: 2106,
     text: 'Litentry',
@@ -113,12 +167,27 @@ export const testParasRococo: EndpointOption[] = [
     }
   },
   {
+    info: 'rococoMangata',
+    paraId: 2110,
+    text: 'Mangata',
+    providers: {
+      Mangata: 'wss://roccoco-testnet-collator-01.mangatafinance.cloud'
+    }
+  },
+  {
+    info: 'rococoMd5',
+    paraId: 2089,
+    text: 'MD5 Network',
+    providers: {
+      'Hashed Systems': 'wss://c1.md5.network'
+    }
+  },
+  {
     info: 'rococoMoonsama',
-    isDisabled: true, // https://github.com/polkadot-js/apps/issues/7526
     paraId: 2055,
     text: 'Moonsama',
     providers: {
-      Moonsama: 'wss://moonsama-testnet-rpc.moonsama.com'
+      // Moonsama: 'wss://moonsama-testnet-rpc.moonsama.com' // https://github.com/polkadot-js/apps/issues/7526
     }
   },
   {
@@ -126,29 +195,36 @@ export const testParasRococo: EndpointOption[] = [
     paraId: 2026,
     text: 'Nodle',
     providers: {
-      OnFinality: 'wss://node-6913072722034561024.lh.onfinality.io/ws?apikey=84d77e2e-3793-4785-8908-5096cffea77a'
+      OnFinality: 'wss://nodle-paradis.api.onfinality.io/public-ws'
     }
+  },
+  {
+    info: 'chainoli',
+    homepage: 'https://www.my-oli.com/en/',
+    paraId: 4023,
+    text: 'OLI',
+    providers: {}
   },
   {
     info: 'rococoOriginTrailParachain',
     homepage: 'https://parachain.origintrail.io',
-    paraId: 3005,
-    text: 'OriginTrail Parachain Testnet',
+    paraId: 2043,
+    text: 'OriginTrail Testnet',
     providers: {
-      TraceLabs: 'wss://parachain-testnet-loadbalancer.origin-trail.network/'
+      TraceLabs: 'wss://parachain-testnet-rpc.origin-trail.network/'
     }
   },
   {
     info: 'rococoPangolin',
     paraId: 2105,
-    text: 'Pangolin Parachain',
+    text: 'Pangolin',
     providers: {
       'Darwinia Network': 'wss://pangolin-parachain-rpc.darwinia.network'
     }
   },
   {
     info: 'rococoKilt',
-    paraId: 2015,
+    paraId: 2086,
     text: 'RILT',
     providers: {
       'KILT Protocol': 'wss://rococo.kilt.io'
@@ -157,10 +233,26 @@ export const testParasRococo: EndpointOption[] = [
   {
     info: 'robonomics',
     homepage: 'http://robonomics.network/',
-    paraId: 3001,
+    paraId: 2048,
     text: 'Robonomics',
     providers: {
       Airalab: 'wss://rococo.rpc.robonomics.network'
+    }
+  },
+  {
+    info: 'rocfinity',
+    paraId: 2021,
+    text: 'Rocfinity',
+    providers: {
+      Efinity: 'wss://rpc.rococo.efinity.io'
+    }
+  },
+  {
+    info: 'snowbridge',
+    paraId: 3016,
+    text: 'Snowbridge',
+    providers: {
+      Snowfork: 'wss://rococo-rpc.snowbridge.network'
     }
   },
   {
@@ -172,11 +264,27 @@ export const testParasRococo: EndpointOption[] = [
     }
   },
   {
+    info: 'rococoSora',
+    paraId: 2011,
+    text: 'SORA',
+    providers: {
+      Soramitsu: 'wss://ws.parachain-collator-1.c1.stg1.sora2.soramitsu.co.jp'
+    }
+  },
+  {
     info: 'rococoSpreehafen',
     paraId: 2116,
     text: 'Spreehafen',
     providers: {
       DataHighway: 'wss://spreehafen.datahighway.com'
+    }
+  },
+  {
+    info: 'rococoSubzero',
+    paraId: 4040,
+    text: 'Subzero',
+    providers: {
+      ZERO: 'wss://staging.para.sub.zero.io'
     }
   },
   {
@@ -188,12 +296,35 @@ export const testParasRococo: EndpointOption[] = [
     }
   },
   {
+    info: 'rococoTinkernet',
+    paraId: 2125,
+    text: 'Tinkernet',
+    providers: {
+      'InvArch Team': 'wss://rococo.invarch.network'
+    }
+  },
+  {
+    info: 'rococoTuring',
+    paraId: 2114,
+    text: 'Turing Network (Staging)',
+    providers: {
+      OAK: 'wss://rpc.turing-staging.oak.tech'
+    }
+  },
+  {
+    info: 'rococoVirto',
+    paraId: 3003,
+    text: 'Virto',
+    providers: {
+      // VirtoNetwork: 'wss://rococo.virtonetwork.xyz' // https://github.com/polkadot-js/apps/issues/8024
+    }
+  },
+  {
     info: 'rococoZeitgeist',
-    isDisabled: true, // See https://github.com/polkadot-js/apps/issues/5842
     paraId: 2050,
     text: 'Zeitgeist PC',
     providers: {
-      Zeitggeist: 'wss://roc.zeitgeist.pm'
+      // Zeitggeist: 'wss://roc.zeitgeist.pm' // See https://github.com/polkadot-js/apps/issues/5842
     }
   }
 ];
@@ -202,18 +333,18 @@ export const testParasRococoCommon: EndpointOption[] = [
   {
     info: 'rococoStatemint',
     paraId: 1000,
-    text: 'Statemint',
+    text: 'Rockmine',
     providers: {
       Parity: 'wss://rococo-statemint-rpc.polkadot.io'
     },
     teleport: [-1]
   },
   {
-    info: 'rococoCanvas',
+    info: 'rococoContracts',
     paraId: 1002,
-    text: 'Canvas',
+    text: 'Contracts',
     providers: {
-      Parity: 'wss://rococo-canvas-rpc.polkadot.io'
+      Parity: 'wss://rococo-contracts-rpc.polkadot.io'
     },
     teleport: [-1]
   },
